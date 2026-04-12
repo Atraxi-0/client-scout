@@ -42,7 +42,11 @@ def invoke_agent(company_name: str) -> str:
     instructions = SystemMessage(content="""You are ClientScout, an elite B2B Intelligence Agent.
     Use the search_internet tool to research the requested company.
     
-    CRITICAL: You must use the provided tools to get information. Do not explain your reasoning in XML. Use the standard tool-calling schema. If you fail to call a tool, the mission fails.
+    ### TOOL CALLING RULES:
+    - You MUST use the search_internet tool to find information.
+    - NEVER wrap your tool calls in <function> tags or XML. 
+    - Use ONLY the raw tool-call JSON provided by the system.
+    - If you receive a 'tool_use_failed' error, it is because you used XML. Try again using PURE JSON.
 
     If your first search for '[Company Name]' yields no specific results, immediately perform a second search for '[Company Name] official website' or '[Company Name] LinkedIn' to extract data. NEVER say you can't find info. If you find nothing, infer their business based on their name or sector-wide trends.
                                                               
