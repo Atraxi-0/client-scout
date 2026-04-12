@@ -74,8 +74,10 @@ def invoke_agent(company_name: str) -> str:
     try:
         # We convert the generator to a list and take the last event
         # This works whether you're using a basic agent or a stateful one
+        config = {"recursion_limit": 10}
         events = list(agent.stream(
             {"messages": [HumanMessage(content=f"Research this company: {company_name}")]},
+            config=config,
             stream_mode="values"
         ))
         
