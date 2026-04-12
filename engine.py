@@ -59,7 +59,6 @@ def invoke_agent(company_name: str) -> str:
     * [Analyze their tech stack/industry to infer challenges like Scalability, Legacy System Migration, or Cybersecurity]
     
     ---
-    *Confidential Analysis for Lead Architect*
     
     INSTRUCTION: Do not return paragraphs. Use bold headers and bullet points. If you cannot find live news, provide an 'Industry Standard Analysis' for their specific sector.*""")
 
