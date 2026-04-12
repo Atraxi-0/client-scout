@@ -59,7 +59,7 @@ def invoke_agent(company_name: str) -> str:
 
     # 4. Execute the Graph
     try:
-        response = agent.invoke({
+        response = agent.stream({
             "messages": [HumanMessage(content=f"Research this company: {company_name}")]
         })
         
