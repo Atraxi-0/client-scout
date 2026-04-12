@@ -17,11 +17,11 @@ load_dotenv()
 
 @tool
 def search_internet(query: str) -> str:
-    """
-    Searches the live internet for recent news and business information.
-    """
+    """Searches the live internet."""
+    print(f"DEBUG: Searching for -> {query}") # Add this line
     try:
-        wrapper = DuckDuckGoSearchAPIWrapper(max_results=5)
+        # Lower the max_results to 3 to speed it up for the demo
+        wrapper = DuckDuckGoSearchAPIWrapper(max_results=3) 
         return wrapper.run(query)
     except Exception as e:
         return f"SEARCH FAILURE: {str(e)}"
