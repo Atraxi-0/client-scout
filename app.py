@@ -12,21 +12,22 @@ def main():
     # User Input
     company_name = st.text_input("Enter Company Name:", placeholder="e.g. NVIDIA, Microsoft, Zomato")
 
-    if st.button("Generate Intelligence Report"):
-        if not company_name:
-            st.warning("Please enter a company name.")
-            return
-
-        with st.spinner(f"Agent is researching {company_name}... (Searching live web)"):
-            try:
-                # Calls your existing LangGraph logic
-                report = invoke_agent(company_name)
-                
-                st.success("Report Generated!")
-                st.markdown(report)
-                
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
+    # Inside app.py, replace the report display area:
+if st.button("Generate Intelligence Report"):
+    with st.spinner("🕵️ ClientScout is scouring the web..."):
+        report = invoke_agent(company_name)
+        
+        # Create a visually distinct card for the report
+        with st.container():
+            st.markdown("### 📊 Search Results")
+            st.info(f"Analysis for: **{company_name}**")
+            
+            # This puts the report inside a clean box
+            st.markdown(f"""
+            <div style="border:1px solid #e6e9ef; padding: 20px; border-radius: 10px; background-color: #f9f9f9; color: #31333f;">
+                {report}
+            </div>
+            """, unsafe_allow_html=True)
 
     # Sidebar info for recruiters
     with st.sidebar:
