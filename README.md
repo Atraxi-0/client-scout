@@ -45,7 +45,7 @@ To run ClientScout locally, follow these steps:
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/your-username/ClientScout.git](https://github.com/your-username/ClientScout.git)
+   git clone https://github.com/Atraxi-0/client-scout.git
    cd ClientScout
    ```
 
